@@ -1,7 +1,7 @@
 function algP = defaultMCMCParams_BPHMM()
 % Creates a struct encoding the default settings for MCMC inference
 
-algP.Niter = 50;
+algP.Niter = 1000;
 
 algP.doSampleFShared = 1;
 algP.doSampleFUnique = 1;
@@ -34,7 +34,7 @@ algP.HMM.var_kappa = 10;
 % Reversible Jump Proposal settings
 algP.RJ.doHastingsFactor = 1;
 algP.RJ.birthPropDistr = 'DataDriven';
-algP.RJ.minW = 15; 
+algP.RJ.minW = 15;
 algP.RJ.maxW = 100;
 
 algP.doAnneal = 0;

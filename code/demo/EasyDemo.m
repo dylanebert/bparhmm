@@ -42,11 +42,11 @@ figure('Units', 'normalized', 'Position', [0.5 0.5 0.5 0.5] );
 plotEmissionParams( TruePsi.theta, data );
 title( 'True Emission Params (with all data points)', 'FontSize', 20 );
 
-pause;
+%pause;
 
 % -------------------------------------------------   RUN MCMC INFERENCE!
 modelP = {'bpM.gamma', 2}; 
-algP   = {'Niter', 100, 'HMM.doSampleHypers',0,'BP.doSampleMass',0,'BP.doSampleConc',0}; 
+algP   = {'Niter', 100, 'HMM.doSampleHypers',0,'BP.doSampleMass',0,'BP.doSampleConc',0};
 % Start out with just one feature for all objects
 initP  = {'F.nTotal', 1}; 
 CH = runBPHMM( data, modelP, {1, 1}, algP, initP );
@@ -92,8 +92,8 @@ title( 'Theta (@ iter 100)', 'FontSize', 20 );
 plotStateSeq( alignedPsi100, [1 3] );
 set( gcf, 'Units', 'normalized', 'Position', [0.1 0.25 0.75 0.5] );
 subplotHandles = findobj(gcf,'type','axes');
-title(min(subplotHandles), 'Est. Z : Seq 1', 'FontSize', 20 );
-title(max(subplotHandles), 'Est. Z : Seq 3', 'FontSize', 20 );
+%title(min(subplotHandles), 'Est. Z : Seq 1', 'FontSize', 20 );
+%title(max(subplotHandles), 'Est. Z : Seq 3', 'FontSize', 20 );
 
 fprintf( 'Remember: actual labels for behaviors are *irrelevant* from model perspective\n');
 fprintf( '  what matters: *aligned* behaviors consistently assigned to same datapoints as ground truth\n' );
