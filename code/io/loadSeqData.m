@@ -17,6 +17,8 @@ switch datasetName
         data = readSeqDataFromPlainText( '../data/mocap6/' );
     case {'MocapBIG'}
         data = readSeqDataFromPlainText( '/data/liv/mhughes/data/MoCapBIG/txt/' );
+    case {'nbc'}
+        data = readSeqDataFromPlainText('D:/nbc/bparhmm/inputs/');
     otherwise
         error( 'Unrecognized data set name' );
 end

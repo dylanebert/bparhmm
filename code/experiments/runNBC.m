@@ -1,11 +1,9 @@
-function [] = runNBC( jobID, taskID, dir )
+function [] = runNBC( jobID, taskID )
 
-data = readSeqDataFromPlainText(dir);
-data = ARSeqData(1, data);
-disp(data);
-modelP = {'obsM.Scoef', 0.5};
+dataP = {'nbc'};
+modelP = {};
 T0 = 50;
 Tf = 10000;
 algP = {'doSampleFUnique', 0, 'doSampleUniqueZ', 1, 'doSplitMerge', 1, 'RJ.birthPropDistr', 'DataDriven', 'doAnneal', 'Lin', 'Anneal.T0', T0, 'Anneal.Tf', Tf};
 initP = {'F.nTotal', 1};
-runBPHMM(data, modelP, {jobID, taskID}, algP, initP);
+runBPHMM(dataP, modelP, {jobID, taskID}, algP, initP);

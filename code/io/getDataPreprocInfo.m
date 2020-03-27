@@ -8,6 +8,7 @@ MocapChannelNames = {'root.ty', 'lowerback.rx', 'lowerback.ry', 'upperneck.ry', 
                      'rhumerus.rz', 'rradius.rx','lhumerus.rz', 'lradius.rx', ...
                      'rtibia.rx', 'rfoot.rx', 'ltibia.rx', 'lfoot.rx'...    
                     };
+NBCChannelNames = {'pos.x', 'pos.y', 'pos.z', 'rot.x', 'rot.y', 'rot.z', 'rot.w'};
                 
 % =============================================== DEFAULT PARAMS
 PP = struct(); 
@@ -44,6 +45,12 @@ switch lower(dataName)
         PP.R = 1;
         PP.windowSize = 12;
         PP.channelNames = MocapChannelNames;  
+    case {'nbc'}
+        PP.nObj = 1;
+        PP.obsDim = 7;
+        PP.R = 1;
+        PP.windowSize = 90;
+        PP.channelNames = NBCChannelNames;
 end
 
 % =============================================== UPDATE WITH USER INPUT

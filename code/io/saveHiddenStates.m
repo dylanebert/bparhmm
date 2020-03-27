@@ -3,7 +3,7 @@ function [] = saveHiddenStates( jobID, taskID )
 data = loadSamplerInfo(jobID, taskID).data;
 OUT = loadSamplerOutput(jobID, taskID);
 
-dir = strcat('/media/dylan/Elements/nbc/markov_outputs/final/');
+dir = strcat('D:/nbc/bparhmm/outputs/');
 Psi = OUT.Psi(length(OUT.Psi));
 
 for ii = 1:data.N
