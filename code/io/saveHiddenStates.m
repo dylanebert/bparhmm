@@ -1,9 +1,10 @@
-function [] = saveHiddenStates( jobID, taskID )
+function [] = saveHiddenStates( jobID, taskID, dir )
 
 data = loadSamplerInfo(jobID, taskID).data;
 OUT = loadSamplerOutput(jobID, taskID);
 
-dir = strcat('D:/nbc/bparhmm/outputs/');
+dir = strcat('D:/nbc/bparhmm/outputs/', dir);
+mkdir(dir);
 Psi = OUT.Psi(length(OUT.Psi));
 
 for ii = 1:data.N

@@ -48,19 +48,19 @@ switch lower(dataName)
     case {'nbc_10hz'}
         PP.nObj = 1;
         PP.obsDim = 7;
-        PP.R = 1;
+        PP.R = 3;
         PP.windowSize = 9;
         PP.channelNames = NBCChannelNames;
     case {'nbc_5hz'}
         PP.nObj = 1;
         PP.obsDim = 7;
-        PP.R = 1;
+        PP.R = 3;
         PP.windowSize = 18;
         PP.channelNames = NBCChannelNames;
     case {'nbc_1hz'}
         PP.nObj = 1;
         PP.obsDim = 7;
-        PP.R = 1;
+        PP.R = 3;
         PP.windowSize = 90;
         PP.channelNames = NBCChannelNames;
 end
