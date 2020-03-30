@@ -1,6 +1,6 @@
-function [] = runNBC( jobID, taskID )
+function [] = runNBC( jobID, taskID, dataset )
 
-dataP = {'nbc'};
+dataP = {dataset};
 modelP = {};
 T0 = 50;
 Tf = 10000;

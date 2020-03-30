@@ -17,8 +17,12 @@ switch datasetName
         data = readSeqDataFromPlainText( '../data/mocap6/' );
     case {'MocapBIG'}
         data = readSeqDataFromPlainText( '/data/liv/mhughes/data/MoCapBIG/txt/' );
-    case {'nbc'}
-        data = readSeqDataFromPlainText('D:/nbc/bparhmm/inputs/');
+    case {'nbc_10hz'}
+        data = readSeqDataFromPlainText('D:/nbc/bparhmm/inputs/10hz/');
+    case {'nbc_5hz'}
+        data = readSeqDataFromPlainText('D:/nbc/bparhmm/inputs/5hz/');
+    case {'nbc_1hz'}
+        data = readSeqDataFromPlainText('D:/nbc/bparhmm/inputs/1hz/');
     otherwise
         error( 'Unrecognized data set name' );
 end

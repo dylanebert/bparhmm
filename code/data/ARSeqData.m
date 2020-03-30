@@ -21,11 +21,12 @@ classdef ARSeqData < SeqData
         function obj = ARSeqData( varargin )
             obj.R = varargin{1};                
             if length( varargin ) >= 2
-                if isobject( varargin{2} )
-                    Q = varargin{2};
-                else
-                    Q = obj@SeqData( varargin(2:end) );
-                end
+                Q = varargin{2};
+                %if isobject( varargin{2} )
+                %    Q = varargin{2};
+                %else
+                %    Q = obj@SeqData( varargin(2:end) );
+                %end
                 N = Q.N;
                 
                 for ii = 1:N
@@ -60,22 +61,22 @@ classdef ARSeqData < SeqData
         %   Ensure that the data is preprocessed appropriately
         %     so that we obtain the correct AR stats.
         function obj = addSeq( obj, seqData, name, zTrue )
-            R = obj.R;
-            T=size( seqData, 2 )-R;
+            obj.R = obj.R;
+            T=size( seqData, 2 )-obj.R;
             obj.N = obj.N+1;
             obj.D = size( seqData,1);
             obj.Ts(end+1) = T;
             obj.aggTs(end+1) = obj.aggTs(end)+T;
             obj.seqNames{end+1} = name;
-            obj.Xdata( :, obj.aggTs(end-1)+1:obj.aggTs(end) ) = seqData(:,R+1:end);
+            obj.Xdata( :, obj.aggTs(end-1)+1:obj.aggTs(end) ) = seqData(:,obj.R+1:end);
             Xprev = seqData(:,1:end-1);
-            XprevR = zeros( obj.D*obj.R, T);
+            obj.XprevR = zeros( obj.D*obj.R, T);
             for tt = 1:T
-               XprevR(:,tt) = reshape( Xprev(:,tt+R-1:-1:tt), 1, obj.D*obj.R );
+               obj.XprevR(:,tt) = reshape( Xprev(:,tt+obj.R-1:-1:tt), 1, obj.D*obj.R );
             end
-            obj.XprevR(:, obj.aggTs(end-1)+1:obj.aggTs(end) ) = XprevR;
+            obj.XprevR(:, obj.aggTs(end-1)+1:obj.aggTs(end) ) = obj.XprevR;
             if exist( 'zTrue','var')
-                obj.zTrueAll( obj.aggTs(end-1)+1:obj.aggTs(end) )    = zTrue(R+1:end);
+                obj.zTrueAll( obj.aggTs(end-1)+1:obj.aggTs(end) )    = zTrue(obj.R+1:end);
             end
         end
         

@@ -1,4 +1,5 @@
 DATA_DIR = 'D:/nbc/bparhmm/inputs';
+SAVE_DIR = 'D:/nbc/bparhmm/inputs/10hz';
 LAG_LENGTH = 1;
 
 ChannelNames = {'pos.x', 'pos.y', 'pos.z', 'rot.x', 'rot.y', 'rot.z', 'rot.w'};
@@ -6,7 +7,7 @@ ChannelNames = {'pos.x', 'pos.y', 'pos.z', 'rot.x', 'rot.y', 'rot.z', 'rot.w'};
 Preproc.nObj = 1;
 Preproc.obsDim = 7;
 Preproc.R = LAG_LENGTH;
-Preproc.windowSize = 90;
+Preproc.windowSize = 9;
 Preproc.channelNames = ChannelNames;
 
 myFileList = dir(fullfile(DATA_DIR, '*.mat'));
@@ -24,5 +25,5 @@ for ii = 1:length(myFileList)
     data = data.addSeq(D, fname);
 end
 
-saveSeqDataToPlainText( data, DATA_DIR );
-fprintf( '... saved to plain text in dir %s\n', DATA_DIR );
+saveSeqDataToPlainText( data, SAVE_DIR );
+fprintf( '... saved to plain text in dir %s\n', SAVE_DIR );
